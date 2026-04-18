@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Firebase Test</title>
+</head>
+<body>
+
+<h2>Firebase Test</h2>
+<button id="testBtn">Save Test Data</button>
+
+<script type="module">
+  import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-app.js";
+  import { getFirestore, collection, addDoc } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore.js";
+
+  const firebaseConfig = {
+  apiKey: "AIzaSyBMFdLwRRUbsOC7z_9ls1QaB7wVboay9gI",
+  authDomain: "finova-b3eb8.firebaseapp.com",
+  projectId: "finova-b3eb8",
+  storageBucket: "finova-b3eb8.appspot.com",
+  messagingSenderId: "921889658253",
+  appId: "1:921889658253:web:d6a800dc82490aa991d9c4"
+};
+
+  const app = initializeApp(firebaseConfig);
+  const db = getFirestore(app);
+
+  const btn = document.getElementById("testBtn");
+
+  btn.addEventListener("click", async () => {
+    alert("Button clicked"); // 🔥 debug
+
+    try {
+      await addDoc(collection(db, "test"), {
+        name: "Kelvin",
+        time: new Date()
+      });
+
+      alert("✅ Data saved successfully!");
+    } catch (error) {
+      alert("❌ Error: " + error.message);
+      console.log(error);
+    }
+  });
+</script>
+
+</body>
+</html>
