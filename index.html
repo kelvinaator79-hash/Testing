@@ -8,43 +8,38 @@
 <h2>Firebase Test</h2>
 <button id="testBtn">Save Test Data</button>
 
-<script type="module">
-  import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-app.js";
-  import { getFirestore, collection, addDoc } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore.js";
+<<script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-app.js"></script>
+<script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-firestore.js"></script>
 
+<script>
   const firebaseConfig = {
-  apiKey: "AIzaSyBMFdLwRRUbsOC7z_9ls1QaB7wVboay9gI",
-  authDomain: "finova-b3eb8.firebaseapp.com",
-  projectId: "finova-b3eb8",
-  storageBucket: "finova-b3eb8.appspot.com",
-  messagingSenderId: "921889658253",
-  appId: "1:921889658253:web:d6a800dc82490aa991d9c4"
-};
+    apiKey: "AIzaSyBMFdLwRRUbsOC7z_9ls1QaB7wVboay9gI",
+    authDomain: "finova-b3eb8.firebaseapp.com",
+    projectId: "finova-b3eb8",
+    storageBucket: "finova-b3eb8.appspot.com",
+    messagingSenderId: "921889658253",
+    appId: "1:921889658253:web:d6a800dc82490aa991d9c4"
+  };
 
-  const app = initializeApp(firebaseConfig);
-  const db = getFirestore(app);
+  firebase.initializeApp(firebaseConfig);
+  const db = firebase.firestore();
 
   const btn = document.getElementById("testBtn");
 
-  btn.addEventListener("click", async () => {
-  alert("Button clicked");
+  btn.addEventListener("click", function () {
+    alert("Button clicked");
 
-  try {
-    console.log("Trying to write to Firestore...");
-
-    await addDoc(collection(db, "test"), {
+    db.collection("test").add({
       name: "Kelvin",
       time: new Date()
+    })
+    .then(function () {
+      alert("✅ Data saved successfully!");
+    })
+    .catch(function (error) {
+      alert("❌ Error: " + error.message);
     });
-
-    alert("✅ Data saved successfully!");
-
-  } catch (error) {
-    alert("❌ ERROR: " + error.message);
-    console.error("FULL ERROR:", error);
-  }
-});
-</script>
-
+  });
+                  </script>
 </body>
 </html>
