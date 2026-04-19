@@ -27,20 +27,23 @@
   const btn = document.getElementById("testBtn");
 
   btn.addEventListener("click", async () => {
-    alert("Button clicked"); // 🔥 debug
+  alert("Button clicked");
 
-    try {
-      await addDoc(collection(db, "test"), {
-        name: "Kelvin",
-        time: new Date()
-      });
+  try {
+    console.log("Trying to write to Firestore...");
 
-      alert("✅ Data saved successfully!");
-    } catch (error) {
-      alert("❌ Error: " + error.message);
-      console.log(error);
-    }
-  });
+    await addDoc(collection(db, "test"), {
+      name: "Kelvin",
+      time: new Date()
+    });
+
+    alert("✅ Data saved successfully!");
+
+  } catch (error) {
+    alert("❌ ERROR: " + error.message);
+    console.error("FULL ERROR:", error);
+  }
+});
 </script>
 
 </body>
