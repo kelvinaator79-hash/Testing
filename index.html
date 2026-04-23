@@ -6,7 +6,7 @@
 <body>
 
 <h2>Firebase Test</h2>
-<button id="testBtn">Save Test Data</button>
+<button id="testbtn">Save Test Data</button>
   <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-app.js"></script>
 <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-firestore.js"></script>
 
@@ -15,7 +15,7 @@
     apiKey: "AIzaSyBMFdLwRRUbsOC7z_9ls1QaB7wVboay9gI",
     authDomain: "finova-b3eb8.firebaseapp.com",
     projectId: "finova-b3eb8",
-    storageBucket: "finova-b3eb8.appspot.com",
+    storageBucket: "finova-b3eb8.firebasestorage.app",
     messagingSenderId: "921889658253",
     appId: "1:921889658253:web:d6a800dc82490aa991d9c4"
   };
@@ -23,7 +23,7 @@
   firebase.initializeApp(firebaseConfig);
   const db = firebase.firestore();
 
-  const btn = document.getElementById("testBtn");
+  const btn = document.getElementById("testbtn");
 
   btn.addEventListener("click", function () {
     alert("Button clicked");
